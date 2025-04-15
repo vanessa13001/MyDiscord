@@ -20,7 +20,7 @@ void *receive_messages(void *arg) {
     }
 
     if (read_size == 0) {
-        printf("Déconnecté du serveur.\n");
+        printf("disconnected from server.\n");
         closesocket(client_socket);
     }
 
