@@ -1,0 +1,7 @@
+# ninja log v6
+18	865	7669609082317281	CMakeFiles/server.dir/networkFuncs.c.obj	4d3a4d4002dbb7d8
+4	888	7669609082177605	CMakeFiles/server.dir/serverMain.c.obj	d1bcca2972bf850e
+11	896	7669609082247487	CMakeFiles/server.dir/serverFuncs.c.obj	a52def45a82be74d
+896	1136	7669609091093796	server.exe	c4c421e5080ec68c
+35	806	7669609658011487	CMakeFiles/server.dir/serverFuncs.c.obj	a52def45a82be74d
+806	971	7669609665720046	server.exe	c4c421e5080ec68c

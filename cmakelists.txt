@@ -1,0 +1,17 @@
+cmake_minimum_required(VERSION 3.10)
+project(ServerProject C)
+
+if (WIN32)
+    add_definitions(-D_WIN32_WINNT=0x0601)
+endif()
+
+set(SOURCES 
+serverMain.c
+serverFuncs.c 
+networkFuncs.c)
+
+add_executable(server ${SOURCES})
+
+if (WIN32)
+    target_link_libraries(server ws2_32)
+endif()
