@@ -1,4 +1,4 @@
-#include "serverFuncs.h"
+#include "../H/serverFuncs.h"
 
 
 int bindServer(SOCKET serverSocket, struct sockaddr_in* address){

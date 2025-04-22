@@ -1,4 +1,4 @@
-#include "serverFuncs.h"
+#include "../H/serverFuncs.h"
 
 int main(){
     if (!initWinsock()){

@@ -1,1 +1,4 @@
 .vscode/
+build/
+cmakelists.txt
+cmakelists server.txt

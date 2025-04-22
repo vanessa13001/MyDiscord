@@ -128,7 +128,7 @@ CMAKE_PROJECT_DESCRIPTION:STATIC=
 CMAKE_PROJECT_HOMEPAGE_URL:STATIC=
 
 //Value Computed by CMake
-CMAKE_PROJECT_NAME:STATIC=ServerProject
+CMAKE_PROJECT_NAME:STATIC=clientProject
 
 //Path to a program.
 CMAKE_RANLIB:FILEPATH=C:/mingw32/bin/ranlib.exe
@@ -221,6 +221,15 @@ ServerProject_IS_TOP_LEVEL:STATIC=ON
 
 //Value Computed by CMake
 ServerProject_SOURCE_DIR:STATIC=C:/Users/tigan/OneDrive/Documents/LaPlateforme_/JVSI A1/C/MyDiscord
+
+//Value Computed by CMake
+clientProject_BINARY_DIR:STATIC=C:/Users/tigan/OneDrive/Documents/LaPlateforme_/JVSI A1/C/MyDiscord/build
+
+//Value Computed by CMake
+clientProject_IS_TOP_LEVEL:STATIC=ON
+
+//Value Computed by CMake
+clientProject_SOURCE_DIR:STATIC=C:/Users/tigan/OneDrive/Documents/LaPlateforme_/JVSI A1/C/MyDiscord
 
 
 ########################

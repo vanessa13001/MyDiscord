@@ -11,7 +11,7 @@
 # =============================================================================
 
 # =============================================================================
-# Project: ServerProject
+# Project: clientProject
 # Configurations: 
 # =============================================================================
 
@@ -36,48 +36,54 @@ include CMakeFiles/rules.ninja
 
 cmake_ninja_workdir = C$:/Users/tigan/OneDrive/Documents/LaPlateforme_/JVSI$ A1/C/MyDiscord/build/
 # =============================================================================
-# Object build statements for EXECUTABLE target server
+# Object build statements for EXECUTABLE target client
 
 
 #############################################
-# Order-only phony target for server
+# Order-only phony target for client
 
-build cmake_object_order_depends_target_server: phony || .
+build cmake_object_order_depends_target_client: phony || .
 
-build CMakeFiles/server.dir/serverMain.c.obj: C_COMPILER__server_unscanned_ C$:/Users/tigan/OneDrive/Documents/LaPlateforme_/JVSI$ A1/C/MyDiscord/serverMain.c || cmake_object_order_depends_target_server
+build CMakeFiles/client.dir/network/client/C/clientMain.c.obj: C_COMPILER__client_unscanned_ C$:/Users/tigan/OneDrive/Documents/LaPlateforme_/JVSI$ A1/C/MyDiscord/network/client/C/clientMain.c || cmake_object_order_depends_target_client
   DEFINES = -D_WIN32_WINNT=0x0601
-  DEP_FILE = CMakeFiles\server.dir\serverMain.c.obj.d
-  OBJECT_DIR = CMakeFiles\server.dir
-  OBJECT_FILE_DIR = CMakeFiles\server.dir
+  DEP_FILE = CMakeFiles\client.dir\network\client\C\clientMain.c.obj.d
+  FLAGS = -std=gnu99
+  INCLUDES = -I"C:/Users/tigan/OneDrive/Documents/LaPlateforme_/JVSI A1/C/MyDiscord/network" -I"C:/Users/tigan/OneDrive/Documents/LaPlateforme_/JVSI A1/C/MyDiscord/network/client"
+  OBJECT_DIR = CMakeFiles\client.dir
+  OBJECT_FILE_DIR = CMakeFiles\client.dir\network\client\C
 
-build CMakeFiles/server.dir/serverFuncs.c.obj: C_COMPILER__server_unscanned_ C$:/Users/tigan/OneDrive/Documents/LaPlateforme_/JVSI$ A1/C/MyDiscord/serverFuncs.c || cmake_object_order_depends_target_server
+build CMakeFiles/client.dir/network/client/C/clientFuncs.c.obj: C_COMPILER__client_unscanned_ C$:/Users/tigan/OneDrive/Documents/LaPlateforme_/JVSI$ A1/C/MyDiscord/network/client/C/clientFuncs.c || cmake_object_order_depends_target_client
   DEFINES = -D_WIN32_WINNT=0x0601
-  DEP_FILE = CMakeFiles\server.dir\serverFuncs.c.obj.d
-  OBJECT_DIR = CMakeFiles\server.dir
-  OBJECT_FILE_DIR = CMakeFiles\server.dir
+  DEP_FILE = CMakeFiles\client.dir\network\client\C\clientFuncs.c.obj.d
+  FLAGS = -std=gnu99
+  INCLUDES = -I"C:/Users/tigan/OneDrive/Documents/LaPlateforme_/JVSI A1/C/MyDiscord/network" -I"C:/Users/tigan/OneDrive/Documents/LaPlateforme_/JVSI A1/C/MyDiscord/network/client"
+  OBJECT_DIR = CMakeFiles\client.dir
+  OBJECT_FILE_DIR = CMakeFiles\client.dir\network\client\C
 
-build CMakeFiles/server.dir/networkFuncs.c.obj: C_COMPILER__server_unscanned_ C$:/Users/tigan/OneDrive/Documents/LaPlateforme_/JVSI$ A1/C/MyDiscord/networkFuncs.c || cmake_object_order_depends_target_server
+build CMakeFiles/client.dir/network/networkFuncs.c.obj: C_COMPILER__client_unscanned_ C$:/Users/tigan/OneDrive/Documents/LaPlateforme_/JVSI$ A1/C/MyDiscord/network/networkFuncs.c || cmake_object_order_depends_target_client
   DEFINES = -D_WIN32_WINNT=0x0601
-  DEP_FILE = CMakeFiles\server.dir\networkFuncs.c.obj.d
-  OBJECT_DIR = CMakeFiles\server.dir
-  OBJECT_FILE_DIR = CMakeFiles\server.dir
+  DEP_FILE = CMakeFiles\client.dir\network\networkFuncs.c.obj.d
+  FLAGS = -std=gnu99
+  INCLUDES = -I"C:/Users/tigan/OneDrive/Documents/LaPlateforme_/JVSI A1/C/MyDiscord/network" -I"C:/Users/tigan/OneDrive/Documents/LaPlateforme_/JVSI A1/C/MyDiscord/network/client"
+  OBJECT_DIR = CMakeFiles\client.dir
+  OBJECT_FILE_DIR = CMakeFiles\client.dir\network
 
 
 # =============================================================================
-# Link build statements for EXECUTABLE target server
+# Link build statements for EXECUTABLE target client
 
 
 #############################################
-# Link the executable server.exe
+# Link the executable client.exe
 
-build server.exe: C_EXECUTABLE_LINKER__server_ CMakeFiles/server.dir/serverMain.c.obj CMakeFiles/server.dir/serverFuncs.c.obj CMakeFiles/server.dir/networkFuncs.c.obj
+build client.exe: C_EXECUTABLE_LINKER__client_ CMakeFiles/client.dir/network/client/C/clientMain.c.obj CMakeFiles/client.dir/network/client/C/clientFuncs.c.obj CMakeFiles/client.dir/network/networkFuncs.c.obj
   LINK_LIBRARIES = -lws2_32  -lkernel32 -luser32 -lgdi32 -lwinspool -lshell32 -lole32 -loleaut32 -luuid -lcomdlg32 -ladvapi32
-  OBJECT_DIR = CMakeFiles\server.dir
+  OBJECT_DIR = CMakeFiles\client.dir
   POST_BUILD = cd .
   PRE_LINK = cd .
-  TARGET_FILE = server.exe
-  TARGET_IMPLIB = libserver.dll.a
-  TARGET_PDB = server.exe.dbg
+  TARGET_FILE = client.exe
+  TARGET_IMPLIB = libclient.dll.a
+  TARGET_PDB = client.exe.dbg
 
 
 #############################################
@@ -105,7 +111,7 @@ build rebuild_cache: phony CMakeFiles/rebuild_cache.util
 # =============================================================================
 # Target aliases.
 
-build server: phony server.exe
+build client: phony client.exe
 
 # =============================================================================
 # Folder targets.
@@ -115,7 +121,7 @@ build server: phony server.exe
 #############################################
 # Folder: C:/Users/tigan/OneDrive/Documents/LaPlateforme_/JVSI A1/C/MyDiscord/build
 
-build all: phony server.exe
+build all: phony client.exe
 
 # =============================================================================
 # Built-in targets

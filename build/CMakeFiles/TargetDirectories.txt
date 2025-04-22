@@ -1,3 +1,3 @@
-C:/Users/tigan/OneDrive/Documents/LaPlateforme_/JVSI A1/C/MyDiscord/build/CMakeFiles/server.dir
+C:/Users/tigan/OneDrive/Documents/LaPlateforme_/JVSI A1/C/MyDiscord/build/CMakeFiles/client.dir
 C:/Users/tigan/OneDrive/Documents/LaPlateforme_/JVSI A1/C/MyDiscord/build/CMakeFiles/edit_cache.dir
 C:/Users/tigan/OneDrive/Documents/LaPlateforme_/JVSI A1/C/MyDiscord/build/CMakeFiles/rebuild_cache.dir

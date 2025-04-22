@@ -1,17 +1,29 @@
+###CLIENT SIDE
+
 cmake_minimum_required(VERSION 3.10)
-project(ServerProject C)
+project(clientProject C)
 
 if (WIN32)
     add_definitions(-D_WIN32_WINNT=0x0601)
 endif()
 
-set(SOURCES 
-serverMain.c
-serverFuncs.c 
-networkFuncs.c)
+set(CMAKE_C_STANDARD 99)
 
-add_executable(server ${SOURCES})
+include_directories(
+    network
+    network/client
+    )
+
+
+set(SOURCES 
+network/client/C/clientMain.c
+network/client/C/clientFuncs.c 
+network/networkFuncs.c)
+
+add_executable(client ${SOURCES})
+
+
 
 if (WIN32)
-    target_link_libraries(server ws2_32)
+    target_link_libraries(client ws2_32)
 endif()
