@@ -15,7 +15,6 @@ int main(){
     struct sockaddr_in serverAddress = createAddress("127.0.0.1", 8080);
 
 
-
     if (bindServer(serverSocket, &serverAddress)==1){
         WSACleanup();
         return 1;
@@ -27,26 +26,34 @@ int main(){
     }
     printf("waiting for client connection \n");
 
+
+
+    while(1){
     SOCKET clientSocket = accept(serverSocket,NULL, NULL);
     if (clientSocket==INVALID_SOCKET){
         printf("connection failed, error: %d", WSAGetLastError());
-        WSACleanup();
-        return 1;
+
+        continue;
     }
 
     printf("client connected! \n");
 
-    char buffer[512];
+    SOCKET* clientPtr= malloc(sizeof(SOCKET));
+    if (clientPtr==NULL){
+        printf("failed to allocate memory for client socket \n");
+        closesocket(clientSocket);
+        continue;
+    }
+    *clientPtr=clientSocket;
 
-    int bytesReceived= recv(clientSocket, buffer, sizeof(buffer)-1, 0);
-    if (bytesReceived>0){
-        buffer[bytesReceived]='\0';
-        printf("message from client: %s \n",buffer);
-    }else {
-        printf("no message or connection lost \n");
+    HANDLE threadHandle= newThread(clientPtr, clientThread);
+    if (threadHandle!=NULL){
+        CloseHandle(threadHandle);
     }
 
-    closesocket(clientSocket);
+
+
+    }
     closesocket(serverSocket);
     WSACleanup();
 

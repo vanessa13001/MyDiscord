@@ -24,3 +24,20 @@ int listenConnection(SOCKET serverSocket){
     }
 
 }
+
+
+DWORD WINAPI clientThread(LPVOID lpParam){
+    SOCKET clientSocket= *(SOCKET*)lpParam;
+    free(lpParam);
+
+    HANDLE recvHandle=newThread(&clientSocket, recvThread);
+    if(recvHandle != NULL){
+        CloseHandle(recvHandle);
+    }
+
+    HANDLE sendHandle= newThread(&clientSocket, sendThread);
+    if (sendHandle!=NULL){
+        CloseHandle(sendHandle);
+    }
+    return 0;
+}

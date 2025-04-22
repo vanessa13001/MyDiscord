@@ -34,3 +34,54 @@ struct sockaddr_in createAddress(const char* ip, int port){
 
     return newAddress;
 }
+
+HANDLE newThread(SOCKET* socket, LPTHREAD_START_ROUTINE routine){
+    SOCKET* sockCopy=malloc(sizeof(SOCKET));
+    if (sockCopy){
+    *sockCopy= *socket;
+    } else {
+        printf("memory allocation failed \n");
+        return NULL;
+    }
+
+    HANDLE threadHandle= CreateThread(NULL, 0, routine, sockCopy, 0, NULL);
+    if (threadHandle==NULL){
+        printf("failed to create thread, error: %d", GetLastError());
+        free(sockCopy);
+    }
+
+    return threadHandle;
+}
+
+DWORD WINAPI recvThread(LPVOID lpParam){
+    SOCKET targetSocket=*(SOCKET*)lpParam;
+    free(lpParam);
+
+    char buffer[512];
+    while(1){
+        int bytesReceived=recv(targetSocket, buffer, sizeof(buffer)-1,0);
+        if (bytesReceived>0){
+            buffer[bytesReceived]='\0';
+            printf("%s \n", buffer);
+        }else{
+            printf("no message received or connection lost \n");
+            break;
+        }
+        
+    }
+
+    closesocket(targetSocket);
+    return 0;
+}
+DWORD WINAPI sendThread(LPVOID lpParam){
+    SOCKET targetSocket=*(SOCKET*)lpParam;
+    free(lpParam);
+
+    char message[512];
+    while(1){
+        printf("enter message: ");
+        fflush(stdout);
+        fgets(message, sizeof(message), stdin);
+        send(targetSocket, message, (int)strlen(message), 0);
+}
+}
