@@ -5,7 +5,7 @@
 -- Dumped from database version 17.4
 -- Dumped by pg_dump version 17.4
 
--- Started on 2025-04-18 10:44:10
+-- Started on 2025-04-23 11:03:59
 
 SET statement_timeout = 0;
 SET lock_timeout = 0;
@@ -122,7 +122,9 @@ CREATE TABLE public.users (
     email character varying(100) NOT NULL,
     password_hash text NOT NULL,
     role character varying(20) DEFAULT 'member'::character varying,
-    created_at timestamp without time zone DEFAULT CURRENT_TIMESTAMP
+    created_at timestamp without time zone DEFAULT CURRENT_TIMESTAMP,
+    "Question _1" text,
+    "Question_2" text
 );
 
 
@@ -209,16 +211,16 @@ COPY public.messages (id, user_id, channel_id, content, is_thread, parent_messag
 -- Data for Name: users; Type: TABLE DATA; Schema: public; Owner: postgres
 --
 
-COPY public.users (id, first_name, last_name, email, password_hash, role, created_at) FROM stdin;
-1	Alice	Johnson	alice.johnson@example.com	hashed_pwd_1	admin	2025-04-18 06:29:19.836302
-2	Elti	Smith	elti.smith@example.com	hashed_pwd_2	moderator	2025-04-18 06:29:19.836302
-3	Chris	Brown	chris.brown@example.com	hashed_pwd_3	member	2025-04-18 06:29:19.836302
-4	Diana	Miller	diana.miller@example.com	hashed_pwd_4	member	2025-04-18 06:29:19.836302
-5	Fiona	Davis	fiona.davis@example.com	hashed_pwd_6	moderator	2025-04-18 08:01:36.625345
-6	George	Evans	george.evans@example.com	hashed_pwd_7	member	2025-04-18 08:01:36.625345
-7	Leila	Wilson	leila.wilson@example.com	hashed_pwd_8	admin	2025-04-18 08:01:36.625345
-8	Vanessa	Taylor	vanessa.taylor@example.com	hashed_pwd_9	member	2025-04-18 08:01:36.625345
-9	Julia	Moore	julia.moore@example.com	hashed_pwd_10	member	2025-04-18 08:01:36.625345
+COPY public.users (id, first_name, last_name, email, password_hash, role, created_at, "Question _1", "Question_2") FROM stdin;
+1	Alice	Johnson	alice.johnson@example.com	hashed_pwd_1	admin	2025-04-18 06:29:19.836302	\N	\N
+2	Elti	Smith	elti.smith@example.com	hashed_pwd_2	moderator	2025-04-18 06:29:19.836302	\N	\N
+3	Chris	Brown	chris.brown@example.com	hashed_pwd_3	member	2025-04-18 06:29:19.836302	\N	\N
+4	Diana	Miller	diana.miller@example.com	hashed_pwd_4	member	2025-04-18 06:29:19.836302	\N	\N
+5	Fiona	Davis	fiona.davis@example.com	hashed_pwd_6	moderator	2025-04-18 08:01:36.625345	\N	\N
+6	George	Evans	george.evans@example.com	hashed_pwd_7	member	2025-04-18 08:01:36.625345	\N	\N
+7	Leila	Wilson	leila.wilson@example.com	hashed_pwd_8	admin	2025-04-18 08:01:36.625345	\N	\N
+8	Vanessa	Taylor	vanessa.taylor@example.com	hashed_pwd_9	member	2025-04-18 08:01:36.625345	\N	\N
+9	Julia	Moore	julia.moore@example.com	hashed_pwd_10	member	2025-04-18 08:01:36.625345	\N	\N
 \.
 
 
@@ -330,7 +332,7 @@ ALTER TABLE ONLY public.messages
     ADD CONSTRAINT messages_user_id_fkey FOREIGN KEY (user_id) REFERENCES public.users(id) ON DELETE SET NULL;
 
 
--- Completed on 2025-04-18 10:44:11
+-- Completed on 2025-04-23 11:03:59
 
 --
 -- PostgreSQL database dump complete
