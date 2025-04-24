@@ -20,8 +20,6 @@ int main(){
         return 1;
     }
 
-    printf("passed server connection\n");
-
 
     SOCKET *clientPtr= malloc(sizeof(SOCKET));
 

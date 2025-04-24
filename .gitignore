@@ -1,4 +1,4 @@
 .vscode/
-build/
 cmakelists.txt
 cmakelists server.txt
+cmakelists client.txt

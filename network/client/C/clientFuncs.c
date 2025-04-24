@@ -6,6 +6,6 @@ int connectToServer(SOCKET clientSocket, struct sockaddr_in* serverAddress){
         printf("unable to connect, error: %d", WSAGetLastError());
         return 1;
     }
-    printf("connected to server successfully");
+    printf("connected to server successfully \n");
     return 0;
 }
