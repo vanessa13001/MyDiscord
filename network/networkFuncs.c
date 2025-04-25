@@ -64,7 +64,7 @@ DWORD WINAPI recvThread(LPVOID lpParam){
             buffer[bytesReceived]='\0';
             printf("%s \n", buffer);
         }else{
-            printf("connection lost \n");
+            printf(" connection lost \n");
             break;
         }
         

@@ -14,8 +14,8 @@ int main(){
 
     struct sockaddr_in serverAddress= createAddress("127.0.0.1", 8080);
 
-    if (connectToServer(clientSocket,&serverAddress)==SOCKET_ERROR){
-        printf("connection failed, error: %d\n", WSAGetLastError());
+    if (connectToServer(clientSocket,&serverAddress)==1){
+        printf(" Connection failed, terminate session \n", WSAGetLastError());
         WSACleanup();
         return 1;
     }
@@ -24,7 +24,7 @@ int main(){
     SOCKET *clientPtr= malloc(sizeof(SOCKET));
 
     if (clientPtr==NULL){
-        printf("cannot allocate memory to socket pointer\n");
+        printf("cannot allocate memory to socket pointer \n");
         closesocket(clientSocket);
         WSACleanup();
         return 1;
