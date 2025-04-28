@@ -1,0 +1,13 @@
+{
+    "cmake.generator": "Unix Makefiles",
+    "cmake.cmakePath": "C:/Program Files/CMake/bin/cmake.exe",
+    "cmake.configureSettings": {
+      "CMAKE_C_COMPILER": "C:/msys64/ucrt64/bin/gcc.exe",
+      "CMAKE_CXX_COMPILER": "C:/msys64/ucrt64/bin/g++.exe"
+    },
+    "cmake.buildDirectory": "${workspaceFolder}/build",
+    "cmake.sourceDirectory": "${workspaceFolder}",
+    "cmake.environment": {
+      "PATH": "C:/msys64/ucrt64/bin;${env:PATH}"
+    }
+  }

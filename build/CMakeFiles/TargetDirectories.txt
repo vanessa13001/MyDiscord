@@ -1,0 +1,4 @@
+C:/Users/djana/Documents/discord/Mydiscord/build/CMakeFiles/server.dir
+C:/Users/djana/Documents/discord/Mydiscord/build/CMakeFiles/client.dir
+C:/Users/djana/Documents/discord/Mydiscord/build/CMakeFiles/edit_cache.dir
+C:/Users/djana/Documents/discord/Mydiscord/build/CMakeFiles/rebuild_cache.dir

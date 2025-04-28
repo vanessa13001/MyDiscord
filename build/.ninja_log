@@ -1,0 +1,9 @@
+# ninja log v6
+15	186	7672894107990215	CMakeFiles/server.dir/server/auth.c.obj	b6119a4e50be2d07
+22	218	7672894108059704	CMakeFiles/server.dir/server/database.c.obj	fa6a0595217da687
+6	2803	7672894107902712	CMakeFiles/server.dir/server/server.c.obj	70120bf46a1098ba
+2805	3045	7672894135897980	server.exe	bcdeb7236a3e73d5
+28	3853	7672894108119700	CMakeFiles/client.dir/client/client.c.obj	f5f0964c4cb40f3c
+3854	3989	7672894146387016	client.exe	f448490c52b4e6e8
+81	297	7672894371816058	server.exe	bcdeb7236a3e73d5
+24	167	7672894433473172	client.exe	f448490c52b4e6e8
