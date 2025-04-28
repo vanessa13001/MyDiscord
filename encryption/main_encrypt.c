@@ -11,23 +11,23 @@ int main() {
     char decrypted_message[MAX_LENGTH];
     char key[KEY_LENGTH + 1];
 
-    printf("Entrez le message : ");
+    printf("Enter the message: ");
     fgets(original_message, MAX_LENGTH, stdin);
     original_message[strcspn(original_message, "\n")] = '\0'; // Enlever le caractère de nouvelle ligne
 
-    // Générer une clé aléatoire
+    // keys generate automatically
     generate_random_key(key, KEY_LENGTH);
-    printf("Cle generee : %s\n", key);
+    printf("keys generate : %s\n", key);
 
-    // Copier le message original pour l'encryptage
+   // original message for encryption
     strcpy(encrypted_message, original_message);
     xor_cipher(encrypted_message, key);
-    printf("Message crypte : %s\n", encrypted_message);
+    printf("crypte : %s\n", encrypted_message);
 
-    // Copier le message crypté pour le décryptage
+  // encrypted message for decryption
     strcpy(decrypted_message, encrypted_message);
     xor_cipher(decrypted_message, key);
-    printf("Message decrypte : %s\n", decrypted_message);
+    printf("decrypt : %s\n", decrypted_message);
 
     return 0;
 }
