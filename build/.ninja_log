@@ -1,13 +1,15 @@
 # ninja log v6
 18	865	7669609082317281	CMakeFiles/server.dir/networkFuncs.c.obj	4d3a4d4002dbb7d8
 4	888	7669609082177605	CMakeFiles/server.dir/serverMain.c.obj	d1bcca2972bf850e
-26	1289	7672703488425242	CMakeFiles/server.dir/network/server/C/serverFuncs.c.obj	887f5cebbe6b8c24
+26	987	7676196623461367	CMakeFiles/server.dir/network/server/C/serverFuncs.c.obj	887f5cebbe6b8c24
 35	806	7669609658011487	CMakeFiles/server.dir/serverFuncs.c.obj	a52def45a82be74d
-20	1271	7672703488355443	CMakeFiles/server.dir/network/server/C/serverMain.c.obj	7fcf3e4fe932f46d
-29	898	7672731072798379	CMakeFiles/client.dir/network/client/C/clientFuncs.c.obj	3553a16043329738
-34	813	7672730701585334	CMakeFiles/server.dir/network/networkFuncs.c.obj	5d17f93899768b59
-34	764	7672739179086016	CMakeFiles/client.dir/network/client/C/clientMain.c.obj	277513e51a13b963
-35	906	7672731072858232	CMakeFiles/client.dir/network/networkFuncs.c.obj	9370d8abe1ff55c8
-765	938	7672739186387615	client.exe	4ee6df207c21b440
-32	838	7672740155182361	CMakeFiles/client.dir/network/client/C/clientMain.c.obj	277513e51a13b963
-839	1019	7672740163250795	client.exe	4ee6df207c21b440
+19	968	7676196623398517	CMakeFiles/server.dir/network/server/C/serverMain.c.obj	7fcf3e4fe932f46d
+21	996	7676204694004725	CMakeFiles/client.dir/network/client/C/clientFuncs.c.obj	3553a16043329738
+30	1003	7676196623511251	CMakeFiles/server.dir/network/networkFuncs.c.obj	5d17f93899768b59
+14	1015	7676204693940447	CMakeFiles/client.dir/network/client/C/clientMain.c.obj	277513e51a13b963
+25	1064	7676204694044612	CMakeFiles/client.dir/network/networkFuncs.c.obj	9370d8abe1ff55c8
+1004	1349	7676196633245207	server.exe	8f70016dcfa040c4
+13	1112	7676205029166144	CMakeFiles/server.dir/network/server/C/serverMain.c.obj	7fcf3e4fe932f46d
+24	1134	7676205029275891	CMakeFiles/server.dir/network/networkFuncs.c.obj	5d17f93899768b59
+19	1164	7676205029226010	CMakeFiles/server.dir/network/server/C/serverFuncs.c.obj	887f5cebbe6b8c24
+1165	1491	7676205040685816	server.exe	8f70016dcfa040c4
