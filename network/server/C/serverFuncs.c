@@ -35,9 +35,6 @@ DWORD WINAPI clientThread(LPVOID lpParam){
         CloseHandle(recvHandle);
     }
 
-    HANDLE sendHandle= newThread(&clientSocket, sendThread);
-    if (sendHandle!=NULL){
-        CloseHandle(sendHandle);
-    }
+
     return 0;
 }

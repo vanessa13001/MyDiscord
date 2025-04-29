@@ -12,7 +12,7 @@ int main(){
         return 1;
     }
 
-    struct sockaddr_in serverAddress= createAddress("127.0.0.1", 8080);
+    struct sockaddr_in serverAddress= createAddress("127.0.0.1", 8081);
 
     if (connectToServer(clientSocket,&serverAddress)==1){
         printf(" Connection failed, terminate session \n", WSAGetLastError());
