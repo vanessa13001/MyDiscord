@@ -1,5 +1,3 @@
-#include <stdio.h>
-#include <string.h>
 #include "encrypt_decrypt.h"
 
 #define MAX_LENGTH 1000 // Max length of the message

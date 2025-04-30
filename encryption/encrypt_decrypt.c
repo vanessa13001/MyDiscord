@@ -1,7 +1,4 @@
 #include "encrypt_decrypt.h"
-#include <string.h>
-#include <stdlib.h>
-#include <time.h>
 
 void xor_cipher(char *message, const char *key) {
     int key_len = strlen(key);
