@@ -2,6 +2,7 @@
     "files.associations": {
         "forgotpasswordprocess.h": "c",
         "hashpassword.h": "c",
-        "config.h": "c"
+        "config.h": "c",
+        "libpq-fe.h": "c"
     }
 }
