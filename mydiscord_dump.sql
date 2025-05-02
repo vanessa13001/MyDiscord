@@ -5,7 +5,7 @@
 -- Dumped from database version 17.4
 -- Dumped by pg_dump version 17.4
 
--- Started on 2025-04-28 10:54:18
+-- Started on 2025-05-02 13:40:12
 
 SET statement_timeout = 0;
 SET lock_timeout = 0;
@@ -137,7 +137,8 @@ CREATE TABLE public.users (
     password_hash text NOT NULL,
     created_at timestamp without time zone DEFAULT CURRENT_TIMESTAMP,
     question_1 text,
-    question_2 text
+    question_2 text,
+    salt character varying(64)
 );
 
 
@@ -199,6 +200,26 @@ ALTER TABLE ONLY public.users ALTER COLUMN id SET DEFAULT nextval('public.users_
 --
 
 COPY public.channel_memberships (user_id, channel_id, role) FROM stdin;
+1	1	admin
+2	1	member
+3	1	member
+1	2	member
+2	2	admin
+4	2	moderator
+3	3	admin
+1	3	member
+5	3	member
+2	4	admin
+3	4	member
+1	5	admin
+2	5	member
+3	5	member
+4	5	member
+4	6	admin
+5	6	member
+5	7	admin
+1	8	admin
+5	8	member
 \.
 
 
@@ -209,9 +230,16 @@ COPY public.channel_memberships (user_id, channel_id, role) FROM stdin;
 --
 
 COPY public.channels (id, name, is_private, members, owner_id, created_at) FROM stdin;
-1	general	f	{1,2,3,4}	1	2025-04-18 06:29:44.494529
-2	staff	t	{1,2}	2	2025-04-18 06:29:44.494529
-3	memes	f	{1,3,4}	3	2025-04-18 06:29:44.494529
+1	General	f	{1,2,3}	1	2025-05-02 13:04:09.854425
+2	Privé	t	{2,4}	2	2025-05-02 13:04:09.854425
+3	Développement	f	{1,3,5}	3	2025-05-02 13:04:09.854425
+4	Design	f	{2,3}	2	2025-05-02 13:04:09.854425
+5	Jeux	f	{1,2,3,4}	1	2025-05-02 13:04:09.854425
+6	Musique	f	{4,5}	4	2025-05-02 13:04:09.854425
+7	Films	t	{2,5}	5	2025-05-02 13:04:09.854425
+8	Cuisine	f	{1,5}	1	2025-05-02 13:04:09.854425
+9	Voyage	t	{3,4}	3	2025-05-02 13:04:09.854425
+10	Sport	f	{2,3,5}	2	2025-05-02 13:04:09.854425
 \.
 
 
@@ -222,9 +250,16 @@ COPY public.channels (id, name, is_private, members, owner_id, created_at) FROM 
 --
 
 COPY public.messages (id, user_id, channel_id, content, is_thread, parent_message_id, emoji_reactions, encrypted, created_at) FROM stdin;
-1	2	1	Thanks Alice! Happy to be here 😊	t	1	\N	f	2025-04-18 06:30:21.659687
-2	1	2	Meeting starts at 3 PM. Don’t forget!	f	\N	\N	t	2025-04-18 06:30:21.659687
-3	3	3	Check out this funny meme! 😂	f	\N	{"🔥": [1], "😂": [2, 4]}	f	2025-04-18 06:30:21.659687
+1	1	1	#.&&%%&%((2,,"&	f	\N	{"😊": [1]}	t	2025-05-02 13:17:01.833348
+2	2	1	,@$&'%,*#*# )$+	f	\N	{"🔥": [2]}	t	2025-05-02 13:17:01.833348
+3	3	1	#%($+#$%/'%	f	\N	{"👍": [3]}	t	2025-05-02 13:17:01.833348
+17	1	1	2.(&"*&$%&*	t	1	{"😂": [1]}	t	2025-05-02 13:18:11.185054
+18	2	1	&$,-"*&$)+	t	2	{"😅": [2]}	t	2025-05-02 13:18:11.185054
+19	3	1	&.&$+%(#	f	\N	{"🤔": [3]}	t	2025-05-02 13:18:11.185054
+20	1	1	,&%/#$(%	f	\N	{"👀": [1, 2]}	t	2025-05-02 13:18:11.185054
+21	2	1	%&%&"#)*,#*	t	3	{"😎": [2]}	t	2025-05-02 13:18:11.185054
+22	3	1	" *'($)&*%	t	3	{"😡": [3]}	t	2025-05-02 13:18:11.185054
+23	1	1	1#*&%,"+#	f	\N	{"🙏": [1]}	t	2025-05-02 13:18:11.185054
 \.
 
 
@@ -234,18 +269,19 @@ COPY public.messages (id, user_id, channel_id, content, is_thread, parent_messag
 -- Data for Name: users; Type: TABLE DATA; Schema: public; Owner: postgres
 --
 
-COPY public.users (id, first_name, last_name, email, password_hash, created_at, question_1, question_2) FROM stdin;
-1	Alice	Johnson	alice.johnson@example.com	hashed_pwd_1	2025-04-18 06:29:19.836302	Shrek	Balut
-2	Elti	Smith	elti.smith@example.com	hashed_pwd_2	2025-04-18 06:29:19.836302	SpongeBob	Durian
-3	Chris	Brown	chris.brown@example.com	hashed_pwd_3	2025-04-18 06:29:19.836302	Bugs	Haggis
-4	Diana	Miller	diana.miller@example.com	hashed_pwd_4	2025-04-18 06:29:19.836302	Goofy	Escargot
-5	Fiona	Davis	fiona.davis@example.com	hashed_pwd_6	2025-04-18 08:01:36.625345	Jerry	Tripe
-7	Leila	Wilson	leila.wilson@example.com	hashed_pwd_8	2025-04-18 08:01:36.625345	Simba	Natto
-8	Vanessa	Taylor	vanessa.taylor@example.com	hashed_pwd_9	2025-04-18 08:01:36.625345	Pikachu	Tofu
-9	Julia	Moore	julia.moore@example.com	hashed_pwd_10	2025-04-18 08:01:36.625345	Tom	Insects
-6	George	Evans	george.evans@example.com	hashed_pwd_7	2025-04-18 08:01:36.625345	Naruto	grenouille
-10	Yuliia	Sherstiuk	yuliia.sherstiuk@laplateforme.io	zyx~}	2025-04-25 15:23:13.431333	Balto	Escargot
-11	eltigani	Abdallah	eltigani.abdallah@laplateforme.io	)..;)$$;	2025-04-28 09:47:04.86208	mama bear	milkshake mangue
+COPY public.users (id, first_name, last_name, email, password_hash, created_at, question_1, question_2, salt) FROM stdin;
+1	Alice	Johnson	alice.johnson@example.com	f9d0c6a69cb9ebdc4c8d39b36b03b9b159f5089ecff7b827618907945458cc56	2025-04-18 06:29:19.836302	Shrek	Balut	6a1f8c6d13b88d0ea9c5aafdbccfa340
+2	Elti	Smith	elti.smith@example.com	7f4c1d7b0f5b9b091d2b5c9ea67fc38f3b3b87b4d9efad69b90b50f3ad4f4d22	2025-04-18 06:29:19.836302	SpongeBob	Durian	1a48b9bb4f927da10576b71fcb7d9eab
+3	Chris	Brown	chris.brown@example.com	5f4b635f2e5b1e5e31cf2a90cd39452c8e2f30ff5904d019ff7b12378639f2f6'	2025-04-18 06:29:19.836302	Bugs	Haggis	34bc70969fc04b13b19dfc10409c0da9
+4	Diana	Miller	diana.miller@example.com	dd8b5401cb0803de2a1cc54fcbb59272e9b85a6bc348e9a4cd80ec9642e86b76	2025-04-18 06:29:19.836302	Goofy	Escargot	2d7fe356226fdba76fdb61b76b8eae2a
+5	Fiona	Davis	fiona.davis@example.com	7f51e7bdb0fbbaf23f64f2b8b0214ec59ed39f426be57ff71ad556fb015b4652	2025-04-18 08:01:36.625345	Jerry	Tripe	fd836dc46296372d0e1b6db8b0d75085
+6	George	Evans	george.evans@example.com	4b75d81ac1fc3a4d7c2d26a3e209438c1a080ccd55c9de67e2f6ff705202dcfa	2025-04-18 08:01:36.625345	Naruto	grenouille	ce1bfae5e4260f615e20a9b6c32c6b33
+7	Leila	Wilson	leila.wilson@example.com	6fe027bcb4069287368e18a1412b4e215c8b4505378df9a7f8e00a96de1fe8ad	2025-04-18 08:01:36.625345	Simba	Natto	4a8935b79c209ae474e09a850f9d8317
+8	Vanessa	Taylor	vanessa.taylor@example.com	32e5d0bdbf7f2b72e0a815e53f1a1b88feaa740eae5d88a29cfed73252c2fbe3	2025-04-18 08:01:36.625345	Pikachu	Tofu	ad1cc5406f4b9e397f76ff24b4d22cde
+9	Julia	Moore	julia.moore@example.com	2d13e9f09a826c7be78c10e67d7acb77e07392e98a6a623cf05a4c20a825f931	2025-04-18 08:01:36.625345	Tom	Insects	d417b315228ca80b88b274f68e59e825
+10	Yuliia	Sherstiuk	yuliia.sherstiuk@laplateforme.io	16b4f47d2cf97856b3774d9e9d64e44cc413b0dbd0ec7a035a3748e508d6f1ed	2025-04-25 15:23:13.431333	Balto	Escargot	e9e6b5987d36bfb6d68d1d079db1a34b
+11	eltigani	Abdallah	eltigani.abdallah@laplateforme.io	98c674ba12f4e9c740ba946a8ef6b8e3493a3b43c7e1f498589539f5387e8e11	2025-04-28 09:47:04.86208	mama bear	milkshake mangue	fa99e6fe99183b2225b1b94969307272
+12	christine	ka	christine.chemali@laplateforme.io	b16b9d51d92d0f6cb5f2fbbbeb051f24c520cb7dbd215d50a2e7d2ec929cb86d	2025-04-28 12:56:53.134554	Fiona	Durian	6092f14b909d2a086d615d22c88a8ac1
 \.
 
 
@@ -255,7 +291,7 @@ COPY public.users (id, first_name, last_name, email, password_hash, created_at, 
 -- Name: channels_id_seq; Type: SEQUENCE SET; Schema: public; Owner: postgres
 --
 
-SELECT pg_catalog.setval('public.channels_id_seq', 3, true);
+SELECT pg_catalog.setval('public.channels_id_seq', 13, true);
 
 
 --
@@ -264,7 +300,7 @@ SELECT pg_catalog.setval('public.channels_id_seq', 3, true);
 -- Name: messages_id_seq; Type: SEQUENCE SET; Schema: public; Owner: postgres
 --
 
-SELECT pg_catalog.setval('public.messages_id_seq', 3, true);
+SELECT pg_catalog.setval('public.messages_id_seq', 23, true);
 
 
 --
@@ -273,7 +309,7 @@ SELECT pg_catalog.setval('public.messages_id_seq', 3, true);
 -- Name: users_id_seq; Type: SEQUENCE SET; Schema: public; Owner: postgres
 --
 
-SELECT pg_catalog.setval('public.users_id_seq', 11, true);
+SELECT pg_catalog.setval('public.users_id_seq', 13, true);
 
 
 --
@@ -384,7 +420,7 @@ ALTER TABLE ONLY public.messages
     ADD CONSTRAINT messages_user_id_fkey FOREIGN KEY (user_id) REFERENCES public.users(id) ON DELETE SET NULL;
 
 
--- Completed on 2025-04-28 10:54:19
+-- Completed on 2025-05-02 13:40:12
 
 --
 -- PostgreSQL database dump complete
