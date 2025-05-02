@@ -1,9 +1,10 @@
 #include <gtk/gtk.h>
-#include "UiForgotPassword.h"
-#include "UiMainContent.h"
-#include "UiCreateAccount.h"
-#include "CssLoading.h"
-#include "Utils.h"
+#include "graphics/login/UiCreateAccount.h"
+#include "graphics/mainapp/UiMainContent.h"
+#include "graphics/login/UiForgotPassword.h"
+#include "graphics/utils/CssLoading.h"
+#include "graphics/utils/Utils.h"
+#include "graphics/utils/AppData.h"
 
 
 //Display Create an account page
@@ -34,6 +35,10 @@ show_login(GtkWidget *widget, gpointer stack)
     gtk_stack_set_visible_child_name(GTK_STACK(stack), "login");
 }
 
+//Disconnect
+void on_disconnect_button_clicked(GtkWidget *widget, gpointer stack) {
+    show_login(widget, stack); 
+}
 // Create Elements of the Login page
 void create_login_interface(GtkWidget *stack) {
     GtkWidget *login_box = gtk_box_new(GTK_ORIENTATION_VERTICAL, 0);
@@ -83,7 +88,7 @@ void create_login_interface(GtkWidget *stack) {
     gtk_box_append(GTK_BOX(create_account_container), create_account_link);
     
     //logo icon 
-    GtkWidget *logo_icon = gtk_image_new_from_file("./media/icons/MeetAndChatLogo.png");   
+    GtkWidget *logo_icon = gtk_image_new_from_file("CLIENT/media/icons/MeetAndChatLogo.png");   
     int desired_width = 123;   
     int desired_height = 200; 
     gtk_widget_set_size_request(logo_icon, desired_width, desired_height);
@@ -176,6 +181,18 @@ activate(GtkApplication *app, gpointer user_data)
 
     const char *window_classes[] = {"window", NULL};//css
     gtk_widget_set_css_classes(window, window_classes);//css
+   
+    AppData *data = malloc(sizeof(AppData));    
+        if (!data) {        
+            g_critical("Unable to allocate AppData");       
+             return;    
+    } 
+
+    data->left_box = NULL;     
+    data->stack = stack;     
+    data->servers = NULL;    
+    
+    connect_window_destroy_signal(window, data);
 
     create_login_interface(stack);
 
