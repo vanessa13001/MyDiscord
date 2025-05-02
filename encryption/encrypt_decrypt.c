@@ -15,8 +15,8 @@ void xor_cipher(char *message, const char *key) {
 
 void generate_random_key(char *key, int length) {
     const char charset[] = "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ";
-    srand(time(NULL)); // // Initialize the random number generator
-    // srand((unsigned int)time(NULL)); // Initialize the random number generator
+    srand(time(NULL)); // Initialize the random number generator
+    // srand((unsigned int)time(NULL)); // Initialize the random number generator  
     
     for (int i = 0; i < length; i++) {
         int index = rand() % (sizeof(charset) - 1);
